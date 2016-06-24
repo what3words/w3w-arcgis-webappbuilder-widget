@@ -1,0 +1,15 @@
+{
+  "name": "w3wwidget",
+  "platform": "HTML",
+  "version": "1.4",
+  "wabVersion": "1.4",
+  "author": "what3words",
+  "description": "Reverse geocoding widget with what3words",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "inPanel": false,
+    "keepConfigAfterMapSwithched": false,
+    "supportMultiInstance": false
+  }
+}

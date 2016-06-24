@@ -1,4 +1,4 @@
 # w3w-arcgis-webappbuilder-widget
 what3words reverse geocoding widget for ArcGIS webappbuilder
 
-__under construction__
+![screeshot](./w3wWAB.png)

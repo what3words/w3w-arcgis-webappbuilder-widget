@@ -10,27 +10,33 @@ You need a what3words API key. You can  [register](https://what3words.com/regist
 
 You need a [Web AppBuilder for ArcGIS](https://developers.arcgis.com/web-appbuilder/) (Developer Edition)
 
-Deploy the what3words widget copying the folder `w3wwidget` into `\client\stemapp\widgets`
+- Deploy the what3words widget copying the folder `w3wwidget` into `\client\stemapp\widgets`
 (for information about ArcGIS Webapp Builder see esri's  [documentation](https://developers.arcgis.com/web-appbuilder/guide/deploy-your-widget.htm))
 
-Run the server see esri's [documentation](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm).
+- Run the server see esri's [documentation](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm).
 
-Create you Webapp
+- Create you Webapp
 
-Add the widget
+- Add the widget
+
 ![add widget](./docs/ScreenShot-01-add-widget.png)
 
-Select what3words widget
+- Select what3words widget
+
 ![add widget](./docs/ScreenShot-02-select-widget.png)
 
-Configure the widget with your API key and your preferred language
-![add widget](./docs/ScreenShot-03-config.png)
-check all languages available with the what3words API using the method `languages`. See [documentation](https://docs.what3words.com/api/v2/#lang)
+- Configure the widget with your API key and your preferred language
 
-Now the widget is ready to run in you Webapp, click on the button to activate the widget
+![add widget](./docs/ScreenShot-03-config.png)
+check all languages available with the what3words API using the method `languages`. See
+[documentation](https://docs.what3words.com/api/v2/#lang)
+
+- Now the widget is ready to run in you Webapp, click on the button to activate the widget
+
 ![add widget](./docs/ScreenShot-04-activate.png)
 
-Then click on the map to discover the 3word address
+- Then click on the map to discover the 3word address
+
 ![screenshot](./docs/ScreenShot-05-reverse.png)
 
 

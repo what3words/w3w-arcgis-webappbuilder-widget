@@ -1,52 +1,49 @@
 # <image src="https://what3words.com/assets/images/w3w_square_red.png" width="32" height="32">&nbsp;w3w-arcgis-webappbuilder-widget
 
-This custom widget for ArcGIS Web AppBuilder is a reverse geocoder using what3words API.
+A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/web-appbuilder/) providing reverse geocoding via the [what3words API](https://docs.what3words.com/api/v2/).
 
 ![screenshot](./docs/ScreenShot-05-reverse.png)
 
+## Prerequisites
 
-### Quick start
-You need a what3words API key. You can  [register](https://what3words.com/register?dev=true) easily.
+- An installed and configured instance of [Web AppBuilder for ArcGIS (Developer Edition)](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm)
+- a what3words API key; you can quickly and easily [sign up for a key here](https://what3words.com/register?dev=true)
+- a copy of this widget
 
-You need a [Web AppBuilder for ArcGIS](https://developers.arcgis.com/web-appbuilder/) (Developer Edition)
+## Installation and Configuration
 
-- Deploy the what3words widget copying the folder `w3wwidget` into `\client\stemapp\widgets`
-(for information about ArcGIS Webapp Builder see esri's  [documentation](https://developers.arcgis.com/web-appbuilder/guide/deploy-your-widget.htm))
+- Deploy the widget by copying the `w3wwidget` folder and its contents into your Web AppBuilder installation's `client/stemapp/widgets/` folder
 
-- Run the server see esri's [documentation](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm).
+- Run the [Web AppBuilder server](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm)
 
-- Create you Webapp
+- Create your [own web app](https://developers.arcgis.com/web-appbuilder/guide/build-your-first-app.htm)
 
-- Add the widget
-
+- Add a new widget
 ![add widget](./docs/ScreenShot-01-add-widget.png)
 
-- Select what3words widget
-
+- Select the what3words widget
 ![add widget](./docs/ScreenShot-02-select-widget.png)
 
-- Configure the widget with your API key and your preferred language
-
+- Configure the widget with your what3words API and preferred, default, languages
 ![add widget](./docs/ScreenShot-03-config.png)
-check all languages available with the what3words API using the method `languages`. See
-[documentation](https://docs.what3words.com/api/v2/#lang)
 
-- Now the widget is ready to run in you Webapp, click on the button to activate the widget
+- You can query the what3words API to determine the set of [currently supported languages](https://docs.what3words.com/api/v2/#lang)
 
+- The widget is now ready to run inside your web app; click on the `///` vutton to activate the widget
 ![add widget](./docs/ScreenShot-04-activate.png)
 
-- Then click on the map to discover the 3word address
-
+- Clicking on the map will allow you to discover 3 word addresses at the clicked location
 ![screenshot](./docs/ScreenShot-05-reverse.png)
 
+## Issues
 
-### Issues
-Find a bug or want to request a new feature? Please let us know by submitting an issue.
+Found a bug or want to request a new feature? Please let us know by [submitting an issue](https://github.com/what3words/w3w-arcgis-webappbuilder-widget/issues).
 
-### Contributing
-Anyone and everyone is welcome to contribute.
 
-### Licensing
-The MIT License (MIT)
+## Contributing
 
-A copy of the license is available in the repository's [license](LICENCE) file.
+All contributions are welcome; please submit a pull request.
+
+## Licensing
+
+This widget is licensed under the MIT license; a copy of which can be found in the this repository's [license](LICENSE) file.

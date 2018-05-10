@@ -71,9 +71,6 @@ define(['dojo/_base/declare',
       },
 
       onMapClick: function(evt) {
-        if (window.appInfo.isRunInMobile) {
-          return;
-        }
         if(!this.enabled) {
           return;
         }

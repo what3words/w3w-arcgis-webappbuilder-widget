@@ -21,7 +21,7 @@ function(declare, BaseWidgetSetting) {
       //WAB will get config object through this method
       return {
         apiKey: this.apiKeyNode.value,
-        lang: this.langNode.value
+        language: this.langNode.value
       };
     }
   });

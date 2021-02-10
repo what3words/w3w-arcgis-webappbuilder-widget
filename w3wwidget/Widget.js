@@ -98,10 +98,10 @@ define(['dojo/_base/declare',
 
         var data = {
           'key': key,
-          'lang': this.config.lang,
-          'coords': p.y + ',' + p.x
+          'language': this.config.lang,
+          'coordinates': p.y + ',' + p.x
         };
-        $.get('https://api.what3words.com/v2/reverse', data, function(response) {
+        $.get('https://api.what3words.com/v3/convert-to-3wa', data, function(response) {
           if (response.error) {
             console.log(response);
             if (response.message) {

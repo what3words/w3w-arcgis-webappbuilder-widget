@@ -14,6 +14,7 @@ function(declare, BaseWidgetSetting) {
 
     setConfig: function(config){
       this.apiKeyNode.value = config.apiKey;
+      this.usernameNode.value = config.username;
       this.langNode.value = config.defaultLang;
     },
 
@@ -21,6 +22,7 @@ function(declare, BaseWidgetSetting) {
       //WAB will get config object through this method
       return {
         apiKey: this.apiKeyNode.value,
+        username: this.usernameNode.value,
         language: this.langNode.value
       };
     }

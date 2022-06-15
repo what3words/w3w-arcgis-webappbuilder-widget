@@ -1,4 +1,5 @@
 {
 	"apiKey":"your-api-key",
+	"username":"your-what3words-email-address",
 	"defaultLang": "en"
 }

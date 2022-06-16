@@ -34,7 +34,7 @@ define(['dojo/_base/declare',
       onOpen: function () {
         console.log('onOpen');
         this.enabled = true;
-        $('#w3wtest').text("Click map for 3 word address");
+        $('#what3words').text("Click map for 3 word address");
       },
 
       onClose: function () {
@@ -82,11 +82,11 @@ define(['dojo/_base/declare',
         } else {
           this._markerGraphic.setGeometry(evt.mapPoint);
         }
-        var params = {
-          location: evt.mapPoint
-        };
+        // var params = {
+        //   location: evt.mapPoint
+        // };
         // this._get3wordAddress(evt.mapPoint);
-        this._get3wordAddressWithLocator(params);
+        this._get3wordAddressWithLocator(evt.mapPoint);
       },
 
       _getMarkerGraphic: function (mapPoint) {
@@ -98,58 +98,29 @@ define(['dojo/_base/declare',
         return new Graphic(mapPoint, symbol);
       },
 
-      _get3wordAddressWithLocator: function (params) {
-        var key = this.config.apiKey;
-        var username = this.config.username;
-        var url = "https://arcgis.what3words.com/v2/arcgis/tokens";
-        console.log("request");
-        esriRequest(url, {
-          method: "get",
-          query: {
-            f: "json",
-            username: username,
-            password: key,
-            expiration: 10
-          }
-        }).then(function (response) {
-          console.log(response);
-          var locator = new Locator("https://arcgis.what3words.com/v2/arcgis/rest/services/what3words_EN_English/GeocodeServer?token=" + response.data.token);
-          console.log('locatorURL:' + locator);
-
-          locator.locationToAddress(params,100)
-            .then(function (response) {
-              // var address = response.address;
-              console.log("address: " + response);
-            }).catch(function (error) {
-              console.log("error: " + error);
-            })
-          // return;
+      _get3wordAddressWithLocator: function (mapPoint) {
+        var geocoderUrl = this.config.geocoderUrl;
+        // var geocoderUrl = "https://utility.arcgis.com/usrsvcs/servers/6123e8aa30f345b7a1d18db626ad7156/rest/services/what3words_EN_English/GeocodeServer";
+        var requestHandle = esriRequest({
+          url: geocoderUrl,
+          content: {
+            f: "json"
+          },
+          handleAs: "json",
+          callbackParamName: "callback"
         });
-      }
-
-      // _get3wordAddress: function(mapPoint) {
-      //   var key = this.config.apiKey;
-      //   var p = webMercatorUtils.webMercatorToGeographic(mapPoint);
-
-      //   var data = {
-      //     'key': key,
-      //     'language': this.config.lang,
-      //     'coordinates': p.y + ',' + p.x
-      //   };
-
-      //   $.get('https://api.what3words.com/v3/convert-to-3wa', data, function(response) {
-      //     if (response.error) {
-      //       console.log(response);
-      //       if (response.message) {
-      //         $('#what3words').text(response.message);
-      //       }
-      //     } else {
-      //       var w3w = response.words;
-      //       $('#what3words').text(w3w);
-      //     }
-      //   });
-      //   return ;
-      // }
-
+        requestHandle.then(function (response) {
+          console.log("Success: ", response);
+          var locator = new Locator(geocoderUrl)
+          locator.locationToAddress(mapPoint, 100, function (response) {
+              console.log(response);
+              $('#what3words').text(response.address.Match_addr);
+            });
+        }, function (error) {
+          console.log("Error: ", error);
+        });
+        return ;
+      },
+      
     });
   });

@@ -13,16 +13,14 @@ function(declare, BaseWidgetSetting) {
     },
 
     setConfig: function(config){
-      this.apiKeyNode.value = config.apiKey;
-      this.usernameNode.value = config.username;
+      this.geocoderUrlNode.value = config.geocoderUrl;
       this.langNode.value = config.defaultLang;
     },
 
     getConfig: function(){
       //WAB will get config object through this method
       return {
-        apiKey: this.apiKeyNode.value,
-        username: this.usernameNode.value,
+        geocoderUrl: this.geocoderUrlNode.value,
         language: this.langNode.value
       };
     }

@@ -1,6 +1,6 @@
 define({
   root: ({
-    _widgetLabel: "w3wtest",
+    _widgetLabel: "what3words",
     label1: "Click on the map",
     label2: "what3words address",
     placeHolder: "Click map for 3 word address"

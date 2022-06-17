@@ -7,11 +7,10 @@ define(['dojo/_base/declare',
     'esri/graphic',
     'esri/tasks/locator',
     'esri/request',
-    'esri/geometry/webMercatorUtils',
     'jimu/loaderplugins/jquery-loader!https://code.jquery.com/jquery-git1.min.js'
   ],
   function (declare, BaseWidget, lang, on, PictureMarkerSymbol, GraphicsLayer,
-    Graphic, Locator, esriRequest, webMercatorUtils, $) {
+    Graphic, Locator, esriRequest, $) {
     //To create a widget, you need to derive from BaseWidget.
     return declare([BaseWidget], {
 
@@ -82,10 +81,6 @@ define(['dojo/_base/declare',
         } else {
           this._markerGraphic.setGeometry(evt.mapPoint);
         }
-        // var params = {
-        //   location: evt.mapPoint
-        // };
-        // this._get3wordAddress(evt.mapPoint);
         this._get3wordAddressWithLocator(evt.mapPoint);
       },
 
@@ -100,7 +95,6 @@ define(['dojo/_base/declare',
 
       _get3wordAddressWithLocator: function (mapPoint) {
         var geocoderUrl = this.config.geocoderUrl;
-        // var geocoderUrl = "https://utility.arcgis.com/usrsvcs/servers/6123e8aa30f345b7a1d18db626ad7156/rest/services/what3words_EN_English/GeocodeServer";
         var requestHandle = esriRequest({
           url: geocoderUrl,
           content: {

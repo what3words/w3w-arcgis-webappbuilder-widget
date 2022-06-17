@@ -1,4 +1,3 @@
 {
-	"geocoderUrl":"your-what3words-locator-url",
-	"defaultLang": "en"
+	"geocoderUrl":"your-what3words-locator-url"
 }

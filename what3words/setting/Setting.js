@@ -14,14 +14,12 @@ function(declare, BaseWidgetSetting) {
 
     setConfig: function(config){
       this.geocoderUrlNode.value = config.geocoderUrl;
-      this.langNode.value = config.defaultLang;
     },
 
     getConfig: function(){
       //WAB will get config object through this method
       return {
-        geocoderUrl: this.geocoderUrlNode.value,
-        language: this.langNode.value
+        geocoderUrl: this.geocoderUrlNode.value
       };
     }
   });

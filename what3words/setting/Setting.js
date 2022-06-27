@@ -13,15 +13,13 @@ function(declare, BaseWidgetSetting) {
     },
 
     setConfig: function(config){
-      this.apiKeyNode.value = config.apiKey;
-      this.langNode.value = config.defaultLang;
+      this.geocoderUrlNode.value = config.geocoderUrl;
     },
 
     getConfig: function(){
       //WAB will get config object through this method
       return {
-        apiKey: this.apiKeyNode.value,
-        language: this.langNode.value
+        geocoderUrl: this.geocoderUrlNode.value
       };
     }
   });

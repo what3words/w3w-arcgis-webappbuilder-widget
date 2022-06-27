@@ -31,7 +31,7 @@ A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/we
 - To find the what3words Locator URL, go to your ArcGIS Online or Portal for ArcGIS, click on the `Content > My Organization` tab. Search for your locator, you could filter by `Item type > Tools > Locators` as shown on this image:
 ![add widget](./docs/ScreenShot-06-locator-arcgis-online.png)
 
-Then click on your Locator, scroll down to the bottom of the page, on the right hand side, you will find the URL of your Locator that you will *copy and paste on the configuration page of the what3words widget*, as shown on this image:
+- Then click on your Locator, scroll down to the bottom of the page, on the right hand side, you will find the URL of your Locator that you will *copy and paste on the configuration page of the what3words widget*, as shown on this image:
 ![add widget](./docs/ScreenShot-07-arcgis-online-locator-url.png)
 
 - The widget is now ready to run inside your web app; click on the `///` button to activate the widget

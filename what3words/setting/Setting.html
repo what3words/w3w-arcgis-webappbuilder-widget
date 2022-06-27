@@ -1,3 +1,30 @@
 <div>
-	<label>${nls.geocoderUrl}</label><input data-dojo-attach-point="geocoderUrlNode"><br>
+	<div class="sources-setting">
+		<span class="group-label">${nls.sourceSetting}</span>
+		<div class="instruction">
+			<p>${nls.instruction}</p>
+		</div>
+		<div class="source">
+			<div class="source-url-section">
+				<table class="source-table" cellspacing="0">
+					<tbody>
+						<tr>
+							<td class="first">
+								<span class="source-label">${nls.geocoderUrl}</span>
+							</td>
+							<td class="second">
+								<input class="geocoderUrlInput" data-dojo-attach-point="geocoderUrlNode">
+							</td>
+						</tr>
+						<tr>
+							<td class="first"></td>
+							<td class="second" colspan="2">
+								<span class="tip">${nls.locatorExample}</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>

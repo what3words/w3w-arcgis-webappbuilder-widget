@@ -20,8 +20,10 @@ define(['dojo/_base/declare',
       postCreate: function () {
         this.inherited(arguments);
         console.log('postCreate');
+
         this.graphicsLayer = new GraphicsLayer();
         this.map.addLayer(this.graphicsLayer);
+
         this.own(on(this.map, "click", lang.hitch(this, this.onMapClick)));
       },
 
@@ -33,7 +35,7 @@ define(['dojo/_base/declare',
       onOpen: function () {
         console.log('onOpen');
         this.enabled = true;
-        $('#what3words').text("Click map for 3 word address");
+        $('#what3words').text("Click any location on the map to see its whats3words address");
       },
 
       onClose: function () {
@@ -86,10 +88,10 @@ define(['dojo/_base/declare',
 
       _getMarkerGraphic: function (mapPoint) {
         var symbol = new PictureMarkerSymbol(
-          this.folderUrl + "images/w3wmarker.png",
-          52, 65
+          this.folderUrl + "images/redmarker.png",
+          40, 40
         );
-        symbol.setOffset(0, 33);
+        // symbol.setOffset(0, 12);
         return new Graphic(mapPoint, symbol);
       },
 
@@ -103,18 +105,17 @@ define(['dojo/_base/declare',
           handleAs: "json",
           callbackParamName: "callback"
         });
-        requestHandle.then(function (response) {
-          console.log("Success: ", response);
-          var locator = new Locator(geocoderUrl)
+        requestHandle.then(function () {
+          var locator = new Locator(geocoderUrl);
           locator.locationToAddress(mapPoint, 100, function (response) {
-              console.log(response);
-              $('#what3words').text(response.address.Match_addr);
-            });
+            $('#what3words').text("///" + response.address.Match_addr);
+          });
         }, function (error) {
           console.log("Error: ", error);
+          $('#what3words').text("Error" + error);
         });
-        return ;
+        return;
       },
-      
+
     });
   });

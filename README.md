@@ -20,13 +20,13 @@ A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/we
 
 
 - Add a new widget
-![add widget](./docs/ScreenShot-01-add-widget.png)
+![add widget](./docs/ScreenShot-01-add-what3words-widget.png)
 
 - Select the what3words widget
 ![add widget](./docs/ScreenShot-02-select-widget.png)
 
 - Configure the widget with your what3words Locator URL
-![add widget](./docs/ScreenShot-03-config.png)
+![add widget](./docs/ScreenShot-03-config-with-locator-url.png)
 
 - To find the what3words Locator URL, go to your ArcGIS Online or Portal for ArcGIS, click on the `Content > My Organization` tab. Search for your locator, you could filter by `Item type > Tools > Locators` as shown on this image:
 ![add widget](./docs/ScreenShot-06-locator-arcgis-online.png)
@@ -35,10 +35,10 @@ A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/we
 ![add widget](./docs/ScreenShot-07-arcgis-online-locator-url.png)
 
 - The widget is now ready to run inside your web app; click on the `///` button to activate the widget
-![add widget](./docs/ScreenShot-04-activate.png)
+![add widget](./docs/ScreenShot-04-what3words-widget-activate.png)
 
 - Clicking on the map will allow you to discover 3 word addresses at the clicked location
-![screenshot](./docs/ScreenShot-05-reverse.png)
+![screenshot](./docs/ScreenShot-05-reverse-geocode.png)
 
 ## Issues
 

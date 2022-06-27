@@ -2,7 +2,7 @@
 
 A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/web-appbuilder/) providing reverse geocoding via the [what3words API](https://developer.what3words.com/public-api/docs).
 
-![screenshot](./docs/ScreenShot-05-reverse.png)
+![screenshot](./docs/ScreenShot-05-reverse-geocode.png)
 
 ## Prerequisites
 

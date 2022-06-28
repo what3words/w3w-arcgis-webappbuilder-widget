@@ -1,22 +1,22 @@
 # <image src="https://what3words.com/assets/images/w3w_square_red.png" width="32" height="32">&nbsp;w3w-arcgis-webappbuilder-widget
 
-A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/web-appbuilder/) providing reverse geocoding via the [what3words API](https://developer.what3words.com/public-api/docs).
+A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/web-appbuilder/) providing reverse geocoding via the [what3words ArcGIS locator](https://developer.what3words.com/tools/gis-extensions/arcgis).
 
 ![screenshot](./docs/ScreenShot-05-reverse-geocode.png)
 
 ## Prerequisites
 
 - An installed and configured instance of [Web AppBuilder for ArcGIS (Developer Edition)](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm);
-- a URL of your what3words Locator that has been added to your ArcGIS online or your Portal for ArcGIS by following this [instruction](https://developer.what3words.com/tools/gis-extensions/arcgis) on the what3words developer site;
-- a copy of this widget.
+- A URL of your what3words ArcGIS Locator that has been added to your ArcGIS online or your Portal for ArcGIS by following this [instruction](https://developer.what3words.com/tools/gis-extensions/arcgis) on the what3words developer site;
+- A copy of this widget `what3words`.
 
 ## Installation and Configuration
 
-- Deploy the widget by copying the `what3words` folder and its contents into your Web AppBuilder installation's `client/stemapp/widgets/` folder
+- Deploy the widget by copying the `what3words` folder and its contents into your Web AppBuilder installation's `client/stemapp/widgets/` folder;
 
-- Run the [Web AppBuilder server](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm)
+- Run the [Web AppBuilder server](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm);
 
-- Create your [own web app](https://developers.arcgis.com/web-appbuilder/guide/build-your-first-app.htm)
+- Create your [own Web Application](https://developers.arcgis.com/web-appbuilder/guide/build-your-first-app.htm);
 
 
 - After you have created your own web application, you can now add the what3words widget to it by clicking on any of the empty widget on the left-hand side.

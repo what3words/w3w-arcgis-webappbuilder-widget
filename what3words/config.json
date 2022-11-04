@@ -1,3 +1,4 @@
 {
-	"geocoderUrl":"your-what3words-locator-url"
+	"geocoderUrl":"https://utility.arcgis.com/usrsvcs/servers/6123e8aa30f345b7a1d18db626ad7156/rest/services/what3words_EN_English/GeocodeServer",
+	"zoomLvlconfig":"15"
 }

@@ -1,26 +1,28 @@
 define([
   'dojo/_base/declare',
-  'jimu/BaseWidgetSetting'
+  'jimu/BaseWidgetSetting',
+  'dijit/_WidgetsInTemplateMixin'
 ],
-function(declare, BaseWidgetSetting) {
+function(declare, BaseWidgetSetting, _WidgetsInTemplateMixin) {
 
-  return declare([BaseWidgetSetting], {
+  return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
     baseClass: 'jimu-widget-w3w-setting',
 
-    postCreate: function(){
-      //the config object is passed in
+    startup: function(){
+      this.inherited(arguments);
       this.setConfig(this.config);
     },
 
     setConfig: function(config){
-      this.geocoderUrlNode.value = config.geocoderUrl;
+      this.config = config;
+      this.geocoderUrlNode.set('value',this.config.geocoderUrl);
+      this.zoomLvl.set('value', this.config.zoomLvlconfig);
     },
 
     getConfig: function(){
-      //WAB will get config object through this method
-      return {
-        geocoderUrl: this.geocoderUrlNode.value
-      };
+      this.config.geocoderUrl = this.geocoderUrlNode.get('value');
+      this.config.zoomLvlconfig = this.zoomLvl.get('value');
+      return this.config;
     }
   });
 });

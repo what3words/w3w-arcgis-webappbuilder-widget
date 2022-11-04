@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1
+        id="-image-src-https-what3words-com-assets-images-w3w_square_red-png-width-32-height-32-nbsp-w3w-arcgis-webappbuilder-widget">
+        <image src="https://what3words.com/assets/images/w3w_square_red.png" width="32" height="32">
+            &nbsp;w3w-arcgis-webappbuilder-widget
+    </h1>
+    <p>A custom widget for <a href="https://developers.arcgis.com/web-appbuilder/">Web AppBuilder for ArcGIS</a>
+        providing reverse geocoding via the <a
+            href="https://developer.what3words.com/tools/gis-extensions/arcgis">what3words ArcGIS locator</a>.</p>
+    <p><img src="./docs/ScreenShot-05-reverse-geocode.png" alt="screenshot"></p>
+    <h2 id="prerequisites">Prerequisites</h2>
+    <ul>
+        <li>An installed and configured instance of <a
+                href="https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm">Web AppBuilder for ArcGIS
+                (Developer Edition)</a>;</li>
+        <li>A URL of your what3words ArcGIS Locator that has been added to your ArcGIS online or your Portal for ArcGIS
+            by following this <a href="https://developer.what3words.com/tools/gis-extensions/arcgis">instruction</a> on
+            the what3words developer site;</li>
+        <li>A copy of this widget <code>what3words</code>.</li>
+    </ul>
+    <h2 id="installation-and-configuration">Installation and Configuration</h2>
+    <ul>
+        <li>
+            <p>Deploy the widget by copying the <code>what3words</code> folder and its contents into your Web AppBuilder
+                installation&#39;s <code>client/stemapp/widgets/</code> folder;</p>
+        </li>
+        <li>
+            <p>Run the <a href="https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm">Web AppBuilder
+                    server</a>;</p>
+        </li>
+        <li>
+            <p>Create your <a href="https://developers.arcgis.com/web-appbuilder/guide/build-your-first-app.htm">own Web
+                    Application</a>;</p>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <p>After you have created your own web application, you can now add the what3words widget to it by clicking
+                on any of the empty widget on the left-hand side.
+                <img src="./docs/ScreenShot-01-add-what3words-widget.png" alt="add widget"></p>
+        </li>
+        <li>
+            <p>A list of widgets will pop up. You can search the <code>what3words</code> widget by typing its name on
+                the search bar at the top or look for the widget on the list. Once you have found it, please click on
+                it. If the widget has been selected correctly, a tick will be shown on top of the icon of the widget.
+                <img src="./docs/ScreenShot-02-select-widget.png" alt="add widget"></p>
+        </li>
+        <li>
+            <p>Configure the widget with your <code>what3words Locator URL</code>. By using the what3words locator, you
+                would be able to retrieve the correct what3words address in any coordinate systems used on your web map.
+                Example of a what3words Locator:
+                <code>https://utility.arcgis.com/usrsvcs/servers/&lt;MyGeocodingArcGISUniqueID&gt;/rest/services/what3words_EN_English/GeocodeServer</code>.
+                <img src="./docs/ScreenShot-03-config-with-locator-url.png" alt="add widget"></p>
+        </li>
+        <li>
+            <p>To find the what3words Locator URL, go to your ArcGIS Online or Portal for ArcGIS, click on the
+                <code>Content &gt; My Organization</code> tab. Search for your locator, you could filter by <code>Item
+                    type &gt; Tools &gt; Locators</code> as shown on this screenshot:
+                <img src="./docs/ScreenShot-06-locator-arcgis-online.png" alt="add widget"></p>
+        </li>
+        <li>
+            <p>Then click on your Locator, scroll down to the bottom of the page, on the right-hand side, you will find
+                the URL of your Locator. You need to <em>copy and paste this URL to the configuration page of the
+                    what3words widget</em>, as shown on this screenshot.:
+                <img src="./docs/ScreenShot-07-arcgis-online-locator-url.png" alt="add widget"></p>
+        </li>
+        <li>
+            <p>The widget is now ready to run inside your web app. Click on the <code>///</code> button to activate the
+                widget. A message will appear on the map: <code>Click any location on the map to see its whats3words
+                    address</code>.
+                <img src="./docs/ScreenShot-04-what3words-widget-activate.png" alt="add widget"></p>
+        </li>
+        <li>
+            <p>Clicking on the map will allow you to discover what3words addresses at the clicked location. For example,
+                the point selected on the map returned this what3words address: <code>///filled.count.soap</code>.
+                <img src="./docs/ScreenShot-05-reverse-geocode.png" alt="screenshot"></p>
+        </li>
+    </ul>
+    <h2 id="issues">Issues</h2>
+    <p>Found a bug or want to request a new feature? Please let us know by <a
+            href="https://github.com/what3words/w3w-arcgis-webappbuilder-widget/issues">submitting an issue</a>.</p>
+    <h2 id="contributing">Contributing</h2>
+    <p>All contributions are welcome; please submit a pull request.</p>
+    <h2 id="licensing">Licensing</h2>
+    <p>This widget is licensed under the MIT license; a copy of which can be found in the this repository&#39;s <a
+            href="LICENSE">license</a> file.</p>
+
+
+
+</body>
+
+</html>

@@ -8,8 +8,16 @@
   "copyright": "",
   "license": "http://www.apache.org/licenses/LICENSE-2.0",
   "properties": {
-    "inPanel": false,
-    "keepConfigAfterMapSwithched": false,
-    "supportMultiInstance": false
-  }
+      "hasLocale": true,
+      "hasStyle":true,
+      "hasConfig":true,
+      "hasUIFile":true,
+      "hasSettingPage":true,
+      "hasSettingUIFile":true,
+      "hasSettingLocale":true,
+      "hasSettingStyle":true,
+      "IsController":false,
+      "keepConfigAfterMapSwitched": false,
+      "supportMultiInstance": false
+    }
 }

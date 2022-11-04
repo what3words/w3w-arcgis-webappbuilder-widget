@@ -7,12 +7,14 @@ define(['dojo/_base/declare',
     'esri/graphic',
     'esri/tasks/locator',
     'esri/request',
-    "esri/InfoTemplate",
+    'esri/InfoTemplate',
+    'dijit/layout/ContentPane',
     'jimu/loaderplugins/jquery-loader!https://code.jquery.com/jquery-git1.min.js'
   ],
   function (declare, BaseWidget, lang, on, PictureMarkerSymbol, GraphicsLayer,
-    Graphic, Locator, esriRequest, InfoTemplate, $) {
+    Graphic, Locator, esriRequest, InfoTemplate, ContentPane, $) {
     //To create a widget, you need to derive from BaseWidget.
+    var mapClick;
     return declare([BaseWidget], {
 
       baseClass: 'jimu-widget-w3w',
@@ -25,15 +27,79 @@ define(['dojo/_base/declare',
       },
 
       startup: function () {
-        this.inherited(arguments);
         console.log('startup');
+        this.inherited(arguments);
+        // this.mapIdNode.innerHTML = 'map id:' + this.map.id;
+        this._initContentPane();
+      },
+
+      _initContentPane: function () {
+        this.contentPane = new ContentPane({
+          content: "Click any location on the map to see its what3words address",
+        }, this.inputcoordcontainer);
+        this.contentPane.startup();
       },
 
       onOpen: function () {
         console.log('onOpen');
         this.enabled = true;
-        $('#what3words').text("Click any location on the map to see its whats3words address");
-        
+        this.widgetManager.activateWidget(this);
+      },
+
+      onMapClick: function (evt) {
+        if (!this.enabled) {
+          return;
+        }
+        var graphic = this._getMarkerGraphic(evt.mapPoint);
+        this._get3wordAddressWithLocator(evt.mapPoint, graphic);
+      },
+
+      _getMarkerGraphic: function (mapPoint) {
+        var infoTemplate = new InfoTemplate("Location", "what3words Address: ${what3words Address}");
+        var symbol = new PictureMarkerSymbol(
+          this.folderUrl + "images/redmarker.png",
+          30, 30
+        );
+        // symbol.setOffset(0, 12);
+        return new Graphic(mapPoint, symbol, mapPoint, infoTemplate);
+      },
+
+      _get3wordAddressWithLocator: function (mapPoint, graphic) {
+        var map = this.map;
+        var geocoderUrl = this.config.geocoderUrl;
+        var locator = new Locator(geocoderUrl);
+        var zoomIt = Number(this.config.zoomLvlconfig);
+        var requestHandle = esriRequest({
+          url: geocoderUrl,
+          content: {
+            f: "json"
+          },
+          handleAs: "json",
+          callbackParamName: "callback"
+        });
+        requestHandle.then(function () {
+          locator.locationToAddress(mapPoint, 100, function (response) {
+            console.log(response)
+            var content = "<b>what3words Address:</b> ///" + response.address.what3words + "</br></br>" + "<b>Coordinates:</b> " + response.address.Y + ", " + response.address.X + "</br></br>" + "<b>wkid</b>: " + response.location.spatialReference.wkid;
+            $('.w3winputcontainer').html(content);
+            map.graphics.clear();
+						map.infoWindow.hide();
+            map.graphics.add(graphic);
+            map.infoWindow.setTitle("Location");
+            map.infoWindow.setContent(content);
+            map.infoWindow.resize(250, 100);
+            map.infoWindow.show(mapPoint, map.getInfoWindowAnchor(mapPoint));
+            map.centerAndZoom(mapPoint, zoomIt);
+          });
+        }, function (error) {
+          console.log("Error: ", error);
+          $('#what3words').text("Error" + error);
+        });
+        //When the popup is closed remove the graphic
+				map.infoWindow.on("hide", function () {
+					map.graphics.clear();
+				});
+        return;
       },
 
       onClose: function () {
@@ -61,55 +127,6 @@ define(['dojo/_base/declare',
       destroy: function () {
         this.inherited(arguments);
         console.log('destroy');
-      },
-
-      onMapClick: function (evt) {
-        if (!this.enabled) {
-          return;
-        }
-        var graphic = this._getMarkerGraphic(evt.mapPoint);
-        this._get3wordAddressWithLocator(evt.mapPoint, graphic);
-      },
-
-      _getMarkerGraphic: function (mapPoint) {
-        var infoTemplate = new InfoTemplate("Location", "what3words Address: ${what3words Address}");
-        var symbol = new PictureMarkerSymbol(
-          this.folderUrl + "images/w3wsquare.png",
-          30, 30
-        );
-        // symbol.setOffset(0, 12);
-        return new Graphic(mapPoint, symbol, mapPoint, infoTemplate);
-      },
-
-      _get3wordAddressWithLocator: function (mapPoint, graphic) {
-        var map = this.map;
-        var geocoderUrl = this.config.geocoderUrl;
-        var locator = new Locator(geocoderUrl);
-        var requestHandle = esriRequest({
-          url: geocoderUrl,
-          content: {
-            f: "json"
-          },
-          handleAs: "json",
-          callbackParamName: "callback"
-        });
-        requestHandle.then(function () {
-          locator.locationToAddress(mapPoint, 100, function (response) {
-            var address = response.address.Match_addr
-            $('#what3words').text("///" + address);
-
-            map.graphics.clear();
-						map.infoWindow.hide();
-            map.graphics.add(graphic);
-            map.infoWindow.setTitle("Location");
-            map.infoWindow.setContent("<b>what3words Address:</b> ///" + response.address.Match_addr);
-            map.infoWindow.show(mapPoint, map.getInfoWindowAnchor(mapPoint));
-          });
-        }, function (error) {
-          console.log("Error: ", error);
-          $('#what3words').text("Error" + error);
-        });
-        return;
       },
 
     });

@@ -1,0 +1,9 @@
+{
+  "name": "what3words widget",
+  "description": "A custom widget for Web AppBuilder for ArcGIS providing reverse geocoding via the what3words ArcGIS locator.",
+  "createdTime": 1667824691939,
+  "lastUpdated": 1667824760679,
+  "creator": "manuela_w3w",
+  "icon": "images/icon.png",
+  "thumbnail": "images/thumbnail.png"
+}

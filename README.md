@@ -4,6 +4,9 @@ A custom widget for [Web AppBuilder for ArcGIS](https://developers.arcgis.com/we
 
 ![screenshot](./what3words/docs/ScreenShot-05-reverse-geocode.png)
 
+## Demo App
+You can find the Custom Web AppBuilder what3words widget in this [Github page](https://what3words.github.io/w3w-arcgis-webappbuilder-widget/WebApp-what3words).
+
 ## Prerequisites
 
 - An installed and configured instance of [Web AppBuilder for ArcGIS (Developer Edition)](https://developers.arcgis.com/web-appbuilder/guide/getstarted.htm);

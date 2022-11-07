@@ -14,7 +14,6 @@ define(['dojo/_base/declare',
   function (declare, BaseWidget, lang, on, PictureMarkerSymbol, GraphicsLayer,
     Graphic, Locator, esriRequest, InfoTemplate, ContentPane, $) {
     //To create a widget, you need to derive from BaseWidget.
-    var mapClick;
     return declare([BaseWidget], {
 
       baseClass: 'jimu-widget-w3w',
@@ -23,7 +22,6 @@ define(['dojo/_base/declare',
         this.inherited(arguments);
         console.log('postCreate');
         this.own(on(this.map, "click", lang.hitch(this, this.onMapClick)));
-
       },
 
       startup: function () {
@@ -33,17 +31,17 @@ define(['dojo/_base/declare',
         this._initContentPane();
       },
 
+      onOpen: function () {
+        console.log('onOpen');
+        this.enabled = true;
+        this.widgetManager.activateWidget(this);
+      },
+
       _initContentPane: function () {
         this.contentPane = new ContentPane({
           content: "Click any location on the map to see its what3words address",
         }, this.inputcoordcontainer);
         this.contentPane.startup();
-      },
-
-      onOpen: function () {
-        console.log('onOpen');
-        this.enabled = true;
-        this.widgetManager.activateWidget(this);
       },
 
       onMapClick: function (evt) {
@@ -79,15 +77,13 @@ define(['dojo/_base/declare',
         });
         requestHandle.then(function () {
           locator.locationToAddress(mapPoint, 100, function (response) {
-            console.log(response)
+            // console.log(response)
             var content = "<b>what3words Address:</b> ///" + response.address.what3words + "</br></br>" + "<b>Coordinates:</b> " + response.address.Y + ", " + response.address.X + "</br></br>" + "<b>wkid</b>: " + response.location.spatialReference.wkid;
             $('.w3winputcontainer').html(content);
-            map.graphics.clear();
-						map.infoWindow.hide();
             map.graphics.add(graphic);
             map.infoWindow.setTitle("Location");
             map.infoWindow.setContent(content);
-            map.infoWindow.resize(250, 100);
+            map.infoWindow.resize(250, 110);
             map.infoWindow.show(mapPoint, map.getInfoWindowAnchor(mapPoint));
             map.centerAndZoom(mapPoint, zoomIt);
           });
@@ -98,6 +94,7 @@ define(['dojo/_base/declare',
         //When the popup is closed remove the graphic
 				map.infoWindow.on("hide", function () {
 					map.graphics.clear();
+          $('.w3winputcontainer').text("Click any location on the map to see its what3words address");
 				});
         return;
       },
@@ -105,6 +102,9 @@ define(['dojo/_base/declare',
       onClose: function () {
         console.log('onClose');
         this.enabled = false;
+        this.map.graphics.clear();
+        this.map.infoWindow.hide();
+        $('.w3winputcontainer').text("Click any location on the map to see its what3words address");
       },
 
       onMinimize: function () {

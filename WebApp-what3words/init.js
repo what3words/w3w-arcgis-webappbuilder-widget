@@ -97,7 +97,7 @@ var ie = (function() {
       Urlit + 'dojo/resources/dojo.css',
       Urlit + 'dijit/themes/claro/claro.css',
       Urlit + 'esri/css/esri.css',
-      Urlit + 'dojox/layout/resources/ResizeHandle.css',
+      // Urlit + 'dojox/layout/resources/ResizeHandle.css',
       window.path + 'jimu.js/css/jimu-theme.css'
       //window.path + 'libs/caja-html-sanitizer-minified.js'
       //window.path + 'libs/moment/twix.js',
@@ -197,7 +197,7 @@ var ie = (function() {
       // 'xstyle/css!' + window.apiUrl + 'dojo/resources/dojo.css',
       // 'xstyle/css!' + window.apiUrl + 'dijit/themes/claro/claro.css',
       // 'xstyle/css!' + window.apiUrl + 'esri/css/esri.css',
-      'xstyle/css!' + window.apiUrl + 'dojox/layout/resources/ResizeHandle.css'
+      'xstyle/css!' + Urlit + 'dojox/layout/resources/ResizeHandle.css'
       //'xstyle/css!' + window.path + 'jimu.js/css/jimu-theme.css'
     ];
 

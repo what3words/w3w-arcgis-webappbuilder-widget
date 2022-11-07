@@ -161,15 +161,6 @@
         "name": "MyLocation"
       },
       {
-        "uri": "widgets/AttributeTable/Widget",
-        "position": {
-          "relativeTo": "browser"
-        },
-        "version": "2.24",
-        "id": "widgets_AttributeTable_Widget_13",
-        "name": "AttributeTable"
-      },
-      {
         "uri": "widgets/Splash/Widget",
         "visible": false,
         "position": {

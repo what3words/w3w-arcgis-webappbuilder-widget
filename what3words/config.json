@@ -1,3 +1,4 @@
 {
-	"geocoderUrl":"your-what3words-locator-url"
+	"geocoderUrl":"Enter here your what3owrds Locator URL",
+	"zoomLvlconfig":"18"
 }

@@ -1,8 +1,3 @@
-.jimu-widget-w3w div:first-child{
-  color: #e6323e;
-  font-size: 1.25em;
-  background-color: #fff;
-   border-radius: 10px;
-   border: 2px solid #ccc;
-   padding: 10px;
+.jimu-on-screen-widget-panel {
+  height: 160px !important;
 }

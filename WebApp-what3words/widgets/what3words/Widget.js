@@ -62,6 +62,15 @@ define(['dojo/_base/declare',
         return new Graphic(mapPoint, symbol, mapPoint, infoTemplate);
       },
 
+      copyToClipboard: function(containerid) {
+        var range = document.createRange();
+        range.selectNode(containerid);
+        window.getSelection().removeAllRanges(); 
+        window.getSelection().addRange(range); 
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+      },
+
       _get3wordAddressWithLocator: function (mapPoint, graphic) {
         var map = this.map;
         var geocoderUrl = this.config.geocoderUrl;
@@ -78,8 +87,13 @@ define(['dojo/_base/declare',
         requestHandle.then(function () {
           locator.locationToAddress(mapPoint, 100, function (response) {
             // console.log(response)
+            // clear graphics and infoWindow
+            map.graphics.clear();
+            map.infoWindow.hide();
+            // add graphics and infoWindow
             var content = "<b>what3words Address:</b> ///" + response.address.what3words + "</br></br>" + "<b>Coordinates:</b> " + response.address.Y + ", " + response.address.X + "</br></br>" + "<b>wkid</b>: " + response.location.spatialReference.wkid;
             $('.w3winputcontainer').html(content);
+
             map.graphics.add(graphic);
             map.infoWindow.setTitle("Location");
             map.infoWindow.setContent(content);

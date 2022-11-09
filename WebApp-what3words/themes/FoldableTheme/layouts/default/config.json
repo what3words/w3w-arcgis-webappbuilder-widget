@@ -81,6 +81,12 @@
       },
       "version": "2.24"
     }, {
+      "uri": "widgets/AttributeTable/Widget",
+      "version": "2.24",
+      "position": {
+        "relativeTo": "browser"
+      }
+    }, {
       "uri": "widgets/Splash/Widget",
       "visible": false,
       "position": {

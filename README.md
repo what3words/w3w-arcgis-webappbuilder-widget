@@ -54,6 +54,14 @@ Found a bug or want to request a new feature? Please let us know by [submitting 
 
 All contributions are welcome; please submit a pull request.
 
+## Feedback
+
+We have a quick favor to ask. Would you mind heading to our app in the [what3words ArcGIS Online page](https://w3w.maps.arcgis.com/home/item.html?id=6b85f1de9d594711bec833f297ef8e17) and writing a quick review?
+
+Reviews help us keep up with your needs and they also help others like you to make confident decisions about our what3words applications.
+
+Review or not, we still love you!
+
 ## Licensing
 
 This widget is licensed under the MIT license; a copy of which can be found in the this repository's [license](LICENSE) file.

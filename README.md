@@ -31,7 +31,7 @@ You can find the Custom Web AppBuilder what3words widget in this [Github page](h
 - Configure the widget with your `what3words Locator URL`. 
     * By using the what3words locator, you would be able to retrieve the correct what3words address in any coordinate systems used on your web map. Example of a what3words Locator: `https://utility.arcgis.com/usrsvcs/servers/<MyGeocodingArcGISUniqueID>/rest/services/what3words_EN_English/GeocodeServer`.
     * You can also add a zoom level to choose how close or far you want to dispaly your what3words address.
-    ![config-with-locator-url](./what3words/docs/ScreenShot-03-config-with-locator-url.png)
+    ![config-with-locator-url](./what3words/docs/ScreenShot-03-config-with-w3w-locator-url.png)
 
 - To find the what3words Locator URL, go to your ArcGIS Online or Portal for ArcGIS, click on the `Content > My Organization` tab. Search for your locator, you could filter by `Item type > Tools > Locators` as shown on this screenshot:
 ![locator-arcgis-online](./what3words/docs/ScreenShot-06-locator-arcgis-online.png)

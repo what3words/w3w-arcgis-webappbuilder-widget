@@ -45,6 +45,9 @@ You can find the Custom Web AppBuilder what3words widget in this [Github page](h
 - Clicking on the map will allow you to discover what3words addresses at the clicked location. For example, the point selected on the map returned this what3words address: `///filled.count.soap`.
 ![reverse-geocode](./what3words/docs/ScreenShot-05-reverse-geocode.png)
 
+- You can also copy the what3words address by clicking on the `Copy` button next to the what3words address displayed on the window popup.
+![copy-what3words](./what3words/docs/ScreenShot-08-copy-what3words.png)
+
 ## Issues
 
 Found a bug or want to request a new feature? Please let us know by [submitting an issue](https://github.com/what3words/w3w-arcgis-webappbuilder-widget/issues).

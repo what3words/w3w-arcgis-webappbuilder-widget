@@ -1,3 +1,19 @@
 .jimu-on-screen-widget-panel {
   height: 160px !important;
 }
+
+.esriCTCopyAction {
+  cursor: pointer;
+  width: 14px;
+  height: 16px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  background-image: url('../images/copy_black.png');
+  margin-left: 10px;
+  display: inline-flex;
+}
+
+.esriCTCopyAction:hover {
+  background-image: url('../images/copy_black_hover.png');
+}

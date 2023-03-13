@@ -1,7 +1,9 @@
 define(['dojo/_base/declare',
     'jimu/BaseWidget',
-    'dojo/_base/lang',
     'dojo/on',
+    'dojo/_base/lang',
+    'dojo/_base/html',
+    'dojo/_base/array',
     'esri/symbols/PictureMarkerSymbol',
     'esri/layers/GraphicsLayer',
     'esri/graphic',
@@ -11,7 +13,7 @@ define(['dojo/_base/declare',
     'dijit/layout/ContentPane',
     'jimu/loaderplugins/jquery-loader!https://code.jquery.com/jquery-git1.min.js'
   ],
-  function (declare, BaseWidget, lang, on, PictureMarkerSymbol, GraphicsLayer,
+  function (declare, BaseWidget, on, lang, html, array, PictureMarkerSymbol, GraphicsLayer,
     Graphic, Locator, esriRequest, InfoTemplate, ContentPane, $) {
     //To create a widget, you need to derive from BaseWidget.
     return declare([BaseWidget], {
@@ -27,7 +29,6 @@ define(['dojo/_base/declare',
       startup: function () {
         console.log('startup');
         this.inherited(arguments);
-        // this.mapIdNode.innerHTML = 'map id:' + this.map.id;
         this._initContentPane();
       },
 
@@ -48,8 +49,8 @@ define(['dojo/_base/declare',
         if (!this.enabled) {
           return;
         }
-        var graphic = this._getMarkerGraphic(evt.mapPoint);
-        this._get3wordAddressWithLocator(evt.mapPoint, graphic);
+        // var graphic = this._getMarkerGraphic(evt.mapPoint);
+        this._get3wordAddressWithLocator(evt.mapPoint);
       },
 
       _getMarkerGraphic: function (mapPoint) {
@@ -58,21 +59,27 @@ define(['dojo/_base/declare',
           this.folderUrl + "images/redmarker.png",
           30, 30
         );
-        // symbol.setOffset(0, 12);
+        // map.toScreen(mapPoint)
+        symbol.setOffset(0, 11);
         return new Graphic(mapPoint, symbol, mapPoint, infoTemplate);
       },
 
-      copyToClipboard: function(containerid) {
-        var range = document.createRange();
-        range.selectNode(containerid);
-        window.getSelection().removeAllRanges(); 
-        window.getSelection().addRange(range); 
-        document.execCommand("copy");
-        window.getSelection().removeAllRanges();
+      _appendBtnCopy: function(){
+        var btnCopy = document.createElement("button");
+        btnCopy.setAttribute("class", "esriCTCopyAction");
+        var w3wText = document.getElementById("w3w");
+        w3wText.appendChild(btnCopy);
       },
 
-      _get3wordAddressWithLocator: function (mapPoint, graphic) {
+      _onBtnCopyClicked: function(copyText) {
+        navigator.clipboard.writeText(copyText);
+        // // Alert the copied text
+        alert("Copied the text: " + copyText);
+      },
+
+      _get3wordAddressWithLocator: function (mapPoint) {
         var map = this.map;
+        var graphic = this._getMarkerGraphic(mapPoint);
         var geocoderUrl = this.config.geocoderUrl;
         var locator = new Locator(geocoderUrl);
         var zoomIt = Number(this.config.zoomLvlconfig);
@@ -91,7 +98,7 @@ define(['dojo/_base/declare',
             map.graphics.clear();
             map.infoWindow.hide();
             // add graphics and infoWindow
-            var content = "<b>what3words Address:</b> ///" + response.address.what3words + "</br></br>" + "<b>Coordinates:</b> " + response.address.Y + ", " + response.address.X + "</br></br>" + "<b>wkid</b>: " + response.location.spatialReference.wkid;
+            var content = "<b>what3words Address: </b>" + "<span id='w3w'>///" + response.address.what3words + "</span>" + "</br></br>" + "<b>Coordinates:</b> " + response.address.Y + ", " + response.address.X + "</br></br>" + "<b>wkid</b>: " + response.location.spatialReference.wkid;
             $('.w3winputcontainer').html(content);
 
             map.graphics.add(graphic);
@@ -100,6 +107,17 @@ define(['dojo/_base/declare',
             map.infoWindow.resize(250, 110);
             map.infoWindow.show(mapPoint, map.getInfoWindowAnchor(mapPoint));
             map.centerAndZoom(mapPoint, zoomIt);
+            var btnCopy = document.createElement("button");
+            btnCopy.setAttribute("class", "esriCTCopyAction");
+            btnCopy.setAttribute("title", "Copy what3words address");
+            var w3wText = document.getElementById("w3w");
+            w3wText.appendChild(btnCopy);
+            btnCopy.onclick = function() {
+              navigator.clipboard.writeText(w3wText.innerText);
+              // // Alert the copied text
+              alert("Copied the what3words address: " + w3wText.innerText);
+            }
+        
           });
         }, function (error) {
           console.log("Error: ", error);
